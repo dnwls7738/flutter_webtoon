@@ -35,7 +35,7 @@ class _DetailScreenState extends State<DetailScreen> {
       appBar: AppBar(
         elevation: 1,
         backgroundColor: Colors.white,
-        foregroundColor: Colors.green,
+        foregroundColor: Colors.blue.shade400,
         title: Text(
           widget.title,
           style: const TextStyle(
@@ -61,14 +61,15 @@ class _DetailScreenState extends State<DetailScreen> {
                       width: 250,
                       clipBehavior: Clip.hardEdge,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              blurRadius: 15,
-                              offset: const Offset(10, 10),
-                              color: Colors.black.withOpacity(0.3),
-                            )
-                          ]),
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius: 15,
+                            offset: const Offset(10, 10),
+                            color: Colors.black.withOpacity(0.3),
+                          ),
+                        ],
+                      ),
                       child: Image.network(
                         widget.thumb,
                         headers: const {
@@ -128,7 +129,14 @@ class _DetailScreenState extends State<DetailScreen> {
                             child: Container(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(50),
-                                color: Colors.green,
+                                color: Colors.blue.shade400,
+                                boxShadow: [
+                                  BoxShadow(
+                                    blurRadius: 3,
+                                    offset: const Offset(3, 3),
+                                    color: Colors.black.withOpacity(0.3),
+                                  ),
+                                ],
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(

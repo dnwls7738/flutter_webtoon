@@ -31,9 +31,9 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         elevation: 1,
         backgroundColor: Colors.white,
-        foregroundColor: Colors.green,
+        foregroundColor: Colors.blue.shade400,
         title: const Text(
-          "오늘의 툰's",
+          "네이버 오늘의 웹툰",
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.w500,
@@ -47,7 +47,7 @@ class HomeScreen extends StatelessWidget {
             return Column(
               children: [
                 const SizedBox(
-                  height: 50,
+                  height: 150,
                 ),
                 Expanded(child: makeList(snapshot)),
               ],
