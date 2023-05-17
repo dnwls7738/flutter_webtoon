@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:webtoon/models/webtoon.episode_model.dart';
 import 'package:webtoon/models/webtoon_detail_model.dart';
 import 'package:webtoon/services/api_service.dart';
+import 'package:webtoon/widgets/episode_widget.dart';
 
 class DetailScreen extends StatefulWidget {
   final String title, thumb, id;
@@ -124,43 +125,7 @@ class _DetailScreenState extends State<DetailScreen> {
                     return Column(
                       children: [
                         for (var episode in snapshot.data!)
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 5),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50),
-                                color: Colors.blue.shade400,
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 3,
-                                    offset: const Offset(3, 3),
-                                    color: Colors.black.withOpacity(0.3),
-                                  ),
-                                ],
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 10,
-                                  horizontal: 20,
-                                ),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      episode.title,
-                                      style:
-                                          const TextStyle(color: Colors.white),
-                                    ),
-                                    const Icon(
-                                      Icons.chevron_right_outlined,
-                                      color: Colors.white,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          )
+                          Episode(episode: episode, webtoonId: widget.id)
                       ],
                     );
                   }
@@ -172,44 +137,6 @@ class _DetailScreenState extends State<DetailScreen> {
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  ListView makeList(AsyncSnapshot<List<WebtoonEpisodeModel>> snapshot) {
-    return ListView.separated(
-      scrollDirection: Axis.vertical,
-      itemCount: snapshot.data!.length,
-      itemBuilder: (context, index) {
-        var episode = snapshot.data![index];
-        return Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(50),
-            color: Colors.green,
-          ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 10,
-              horizontal: 20,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  episode.title,
-                  style: const TextStyle(color: Colors.white),
-                ),
-                const Icon(
-                  Icons.chevron_right_outlined,
-                  color: Colors.white,
-                ),
-              ],
-            ),
-          ),
-        );
-      },
-      separatorBuilder: (context, index) => const SizedBox(
-        height: 10,
       ),
     );
   }
