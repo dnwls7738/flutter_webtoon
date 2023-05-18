@@ -2,27 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:webtoon/models/webtoon_model.dart';
 import 'package:webtoon/services/api_service.dart';
 import 'package:webtoon/widgets/webtoon.widget.dart';
+import 'package:intl/intl.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
 
   Future<List<WebtoonModel>> webtoons = ApiService.getTodaysToons();
 
-  ////StatelessWidget
-  // List<WebtoonModel> webtoons = [];
-  // bool isLoading = true;
-
-  // void waitForeWebToons() async {
-  //   webtoons = await ApiService.getTodaysToons();
-  //   isLoading = false;
-  //   setState(() {});
-  // }
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   waitForeWebToons();
-  // }
+  String getToday() {
+    var now = DateTime.now();
+    String formatDate = DateFormat('EEEE').format(now);
+    return formatDate;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +38,17 @@ class HomeScreen extends StatelessWidget {
             return Column(
               children: [
                 const SizedBox(
-                  height: 150,
+                  height: 50,
+                ),
+                Text(
+                  getToday(),
+                  style: TextStyle(
+                    fontSize: 22,
+                    color: Colors.blue.shade400,
+                  ),
+                ),
+                const SizedBox(
+                  height: 50,
                 ),
                 Expanded(child: makeList(snapshot)),
               ],

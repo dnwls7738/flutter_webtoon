@@ -12,7 +12,7 @@ class Episode extends StatelessWidget {
   onButtonTap() async {
     final url = Uri.parse(
         'https://comic.naver.com/webtoon/detail?titleId=$webtoonId&no=${int.parse(episode.id) + 1}');
-    launchUrl(url);
+    launchUrl(url, mode: LaunchMode.externalApplication);
   }
 
   final String webtoonId;

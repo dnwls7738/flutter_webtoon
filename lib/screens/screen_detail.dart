@@ -114,10 +114,6 @@ class _DetailScreenState extends State<DetailScreen> {
                       ),
                       child: Image.network(
                         widget.thumb,
-                        headers: const {
-                          "User-Agent":
-                              "Mozilla/5.0 (Macintosh; intel Mac Os X 10_A15_7) AppleWebkit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36",
-                        },
                       ),
                     ),
                   ),
